@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p id="pTag"></p>
+		<button id="firstSub" onclick="firstFunc()">Execute First Function</button>
+		<button id="firstSub" onclick="secondFunc()">Execute Second Function</button>
+		<br /><br /><br /><br />
+		<a target="_blank" href="https://github.com/Prashant-SL/IBO"> <p>GitHub Repo</p> </a>
+	</body>
+</html>
+<script>
+	let pTag = document.getElementById('pTag');
+	pTag.innerText = 'Click below buttons once to execute the functions';
+
+	const listOfProducts = [
+		{ productName: 'TV', quantity: 10, description: 'television' },
+		{ productName: 'AC', quantity: 5, description: 'air conditioner' },
+		{ productName: 'TV', quantity: 10, description: 'television' },
+		{ productName: 'AC', quantity: 5, description: 'air conditioner' },
+		{ productName: 'FAN', quantity: 10, description: 'Ceiling Fan' },
+	];
+
+	const firstFunc = () => {
+		let obj = {};
+		for (let i = 0; i < listOfProducts.length; i++) {
+			if (obj[listOfProducts[i].productName]) {
+				obj[listOfProducts[i].productName] += 1;
+			} else {
+				obj[listOfProducts[i].productName] = 1;
+			}
+		}
+		pTag.innerText = JSON.stringify(obj);
+	};
+
+	const secondFunc = () => {
+		let obj1 = {};
+		for (let i = 0; i < listOfProducts.length; i++) {
+			if (obj1[listOfProducts[i].productName]) {
+				obj1[listOfProducts[i].productName].quantity += listOfProducts[i].quantity;
+			} else {
+				obj1[listOfProducts[i].productName] = listOfProducts[i];
+			}
+		}
+		pTag.innerText = JSON.stringify(Object.values(obj1));
+	};
+</script>
